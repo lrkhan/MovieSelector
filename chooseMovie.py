@@ -1,5 +1,38 @@
-# get name of movie list
-fileIN = "movies.txt"#input("Movie List File: ") + ".txt"
+def options():
+    print('\n')
+    print("Please select and option from below.")
+    print("1) Select a Random Movie")
+    print("2) View Unwatched Options")
+    print("3) View Watched Videos")
+    print("4) Add a Movie\n")
+
+    usrChoice = int(input("I want to: "))
+    print('\n')
+
+    if usrChoice not in [1,2,3,4]:
+        print("invalid option chosen")
+        options()
+
+    return usrChoice
+
+def SelectRandom(movieList):
+    pass
+
+def unwatched(unwatchedList):
+    pass
+
+def watched(watchedList):
+    pass
+
+def addList(movieList):
+    pass
+
+print("Welcome to the Movie Selector\n")
+
+choice = options()
+
+# get name of movie list and watched listssswwdda
+fileIN = "movies.txt"
 fileOUT = "watched.txt"
 
 # input text files of movie list and watch list
@@ -13,6 +46,15 @@ print("Importing movie names from: ", fileIN," \n")
 movieList = movies.readlines()
 watchedList = watched.readlines()
 movies.close()
+
+if choice == 1:
+    SelectRandom()
+elif choice == 2:
+    unwatched()
+elif choice == 3:
+    watched()
+elif choice == 4:
+    addList()
 
 # remove watched items from movie list
 for title in watchedList:
