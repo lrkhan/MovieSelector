@@ -1,17 +1,20 @@
 import random
 
+run = True
+
 def options():
     print('\n')
     print("Please select and option from below.")
     print("1) Select a Random Movie")
     print("2) View Unwatched Options")
     print("3) View Watched Videos")
-    print("4) Add a Movie to List\n")
+    print("4) Add a Movie to List")
+    print("5) Exit\n")
 
     usrChoice = int(input("I want to: "))
     print('\n')
 
-    if usrChoice not in [1,2,3,4]:
+    if usrChoice not in [1,2,3,4,5]:
         print("invalid option chosen")
         options()
 
@@ -61,46 +64,54 @@ def addList(movieFile):
     
     print(movie," has been added to movies.txt file")
 
-print("Welcome to the Movie Selector\n")
+def main(escape): 
+    print("Welcome to the Movie Selector\n")
 
-choice = options()
+    choice = options()
 
-# get name of movie list and watched lists
-fileIN = "movies.txt"
-fileOUT = "watched.txt"
+    # get name of movie list and watched lists
+    fileIN = "movies.txt"
+    fileOUT = "watched.txt"
 
-# input text files of movie list and watch list
-movies = open(fileIN, "a+")
-watched = open(fileOUT, "a+")
+    # input text files of movie list and watch list
+    movies = open(fileIN, "a+")
+    watched = open(fileOUT, "a+")
 
-# inputing movies from file to container
-print("Importing movie names from: ", fileIN,"\n")
+    # inputing movies from file to container
+    print("Importing movie names from: ", fileIN,"\n")
 
-# movie list container both new and watched
-movieList = movies.readlines()
-watchedList = watched.readlines()
+    # movie list container both new and watched
+    movieList = movies.readlines()
+    watchedList = watched.readlines()
 
-print("Cross Refrencing with Watched Movies....\n")
-# remove watched items from movie list
-for title in watchedList:
-    for item in movieList:
-        if title in item:
-            movieList.remove(item)
-            break
+    print("Cross Refrencing with Watched Movies....\n")
+    # remove watched items from movie list
+    for title in watchedList:
+        for item in movieList:
+            if title in item:
+                movieList.remove(item)
+                break
 
-# list sizes
-movieSize = int(len(movieList))
+    # list sizes
+    movieSize = int(len(movieList))
 
-print("Import Complete\n")
+    print("Import Complete\n")
 
-if choice == 1:
-    SelectRandom(movieList, watchedList)
-elif choice == 2:
-    unwatched(movieList)
-elif choice == 3:
-    watched(watchedList)
-elif choice == 4:
-    addList(movies)
+    if choice == 1:
+        SelectRandom(movieList, watchedList)
+    elif choice == 2:
+        unwatched(movieList)
+    elif choice == 3:
+        watched(watchedList)
+    elif choice == 4:
+        addList(movies)
+    elif choice == 5:
+        escape = False
+        print(escape)
+
+while run:
+    main(run)
+
 
 '''for k in movieList:
     print(k.rstrip('\n'))
