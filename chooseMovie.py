@@ -47,7 +47,7 @@ def unwatched(unwatchedList):
         print(title.rstrip('\n'))
     print("\n---End of List---")
 
-def watched(watchedList):
+def watchedPrint(watchedList):
     size = len(watchedList)
     print("Here is the list of watched movies: ", size, "\n")
     for title in watchedList:
@@ -130,7 +130,7 @@ def main():
         movies.close()
         watched.close()
     elif choice == 3:
-        watched(watchedList)
+        watchedPrint(watchedList)
 
         # closing open file streams
         movies.close()
