@@ -29,7 +29,6 @@ The Good, the Bad, and the Ugly (1966) (It.)
 Taxi Driver (1976)
 The Usual Suspects (1995)
 Schindler's List (1993)
-The Guardians of the Galaxy (2014)
 The Shining (1980)
 The Departed (2006)
 Casablanca (1942)
@@ -141,3 +140,4 @@ The Sting (1973) [N/A]
 Toy Story 3 (2010) [N/A]
 The Bicycle Thief (1948, It.) [N/A]
 The Kid (1921) [N/A]
+The Guardians of the Galaxy (2014)
