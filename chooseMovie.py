@@ -66,6 +66,26 @@ def addList(movieFile):
     
     print(movie," has been added to movies.txt file")
 
+def writeOut(fileIN, fileOUT, movieList, watchedList):
+    # open write up files
+    movie = open(fileIN, "w+")
+    watch = open(fileOUT, "w+")
+
+    # write out list into files
+    for title in movieList:
+        movie.write(title)
+
+    for title in watchedList:
+        watch.write(title) 
+
+    # close files streams
+    movie.close()
+    watch.close()
+
+def closeIO(file1, file2):
+    file1.close()
+    file2.close()
+
 def main(): 
     print("Welcome to the Movie Selector\n")
 
@@ -105,50 +125,29 @@ def main():
         print("Saving progress and writing to files.\n")
         
         # closing open file streams
-        movies.close()
-        watched.close()
-        
-        # open write up files
-        movie = open(fileIN, "w+")
-        watch = open(fileOUT, "w+")
+        closeIO(movies, watched)
 
-        # write out list into files
-        for title in movieList:
-            movie.write(title)
-
-        for title in watchedList:
-            watch.write(title) 
-
-        # close files streams
-        movie.close()
-        watch.close()
+        writeOut(fileIN, fileOUT, movieList, watchedList)
 
     elif choice == 2:
         unwatched(movieList)
 
         # closing open file streams
-        movies.close()
-        watched.close()
+        closeIO(movies, watched)
+
     elif choice == 3:
         watchedPrint(watchedList)
 
         # closing open file streams
-        movies.close()
-        watched.close()
+        closeIO(movies, watched)
+
     elif choice == 4:
         addList(movies)
 
         # closing open file streams
-        movies.close()
-        watched.close()
+        closeIO(movies, watched)
+
     elif choice == 5:
-        # closing open file streams
-        movies.close()
-        watched.close()
-        
-        # open write up files
-        movie = open(fileIN, "w+")
-        watch = open(fileOUT, "w+")
 
         # changing bool value for run for the while loop
         global run
@@ -157,16 +156,10 @@ def main():
         # display closing messages
         endGame()
 
-        # write out list into files
-        for title in movieList:
-            movie.write(title)
+        # closing open file streams
+        closeIO(movies, watched)
 
-        for title in watchedList:
-            watch.write(title) 
-
-        # close files streams
-        movie.close()
-        watch.close()
+        writeOut(fileIN, fileOUT, movieList, watchedList)
 
 def endGame():
     print("Saving changes to associated files.")
